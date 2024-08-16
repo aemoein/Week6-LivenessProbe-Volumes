@@ -6,6 +6,9 @@ spec:
   volumes:
   - name: html-volume
     emptyDir: {}
+  - name: log-volume
+    hostPath:
+      path: /var/log/nginx
   initContainers:
   - name: fetch-index
     image: curlimages/curl:latest
@@ -27,3 +30,5 @@ spec:
     volumeMounts:
     - name: html-volume
       mountPath: /usr/share/nginx/html
+    - name: log-volume
+      mountPath: /var/log/nginx
